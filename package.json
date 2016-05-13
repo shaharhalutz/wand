@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "react-native": "^0.16.0",
-    "react-native-router-redux": "file:../..",
+    "react-native-router-redux": "^0.2.2",
     "react-redux": "^3.1.0",
     "redux": "^3.0.4"
   }
