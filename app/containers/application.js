@@ -2,7 +2,7 @@
 
 import React, { Component, StyleSheet } from 'react-native';
 import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux/native';
+import { connect } from 'react-redux';
 import {
   actions as routerActions,
   NavBar,
@@ -15,6 +15,8 @@ import {
 import Detail from '../components/Detail';
 import Master from '../components/Master';
 import SignIn from '../components/SignIn';
+import Home from '../components/Home'
+
 
 const mapStateToProps = state => ({
   router: state.router,
@@ -57,7 +59,7 @@ class Application extends Component {
         <Route name="signIn" component={SignIn} type="reset" hideNavBar={true} />
         <Route name="detail" component={Detail} />
         <TabRoute name="tabBar" barTint='#FFFFFF' tint="#32DEAF">
-          <Route name="tab1" component={Master('#111')} title="Home" tabItem={{icon: assets['home'], title: 'Home'}} />
+          <Route name="tab1" component={Home('#111')} title="Home" tabItem={{icon: assets['home'], title: 'Home'}} />
           <Route name="tab2" component={Master('#222')} title="Calendar" tabItem={{icon: assets['calendar'], title: 'Calendar'}} />
           <Route name="tab3" component={Master('#333')} title="Video" tabItem={{icon: assets['video'], title: 'Video'}} />
           <Route name="tab4" component={Master('#444')} title="Profile" tabItem={{icon: assets['profile'], title: 'Profile'}} />
