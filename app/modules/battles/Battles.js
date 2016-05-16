@@ -1,4 +1,4 @@
-import React, { StyleSheet, View,Text } from 'react-native'
+import React, { StyleSheet, View ,Text} from 'react-native'
 import { connect } from 'react-redux'
 
 import { Counters, Counter } from './../../components'
@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
   },
   text: {
     color: 'black',
-  }
+  },
 })
 
 const renderCounters = (counters, decrement, increment, incrementWithDelay) => {
@@ -30,10 +30,9 @@ const renderCounters = (counters, decrement, increment, incrementWithDelay) => {
   })
 }
 
-const App = (props) => {
+const Battles = (props) => {
   const {
     actions,
-    assets,
     addNewCounter,
     counters,
     decrement,
@@ -43,21 +42,21 @@ const App = (props) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text} onPress={actions.routes.detail()}>Push detail view</Text>
-
       <Counters addFn={addNewCounter}>
         {renderCounters(counters, decrement, increment, incrementWithDelay)}
       </Counters>
+      <Text style={styles.text} onPress={actions.routes.game()}>Start Game</Text>
+
     </View>
   )
 }
 
-App.displayName = 'App'
+Battles.displayName = 'Battles'
 
 //it is a good practice to always indicate what type of props does your component
 //receive. This is really good for documenting and prevent you from a lot of bug during
 //development mode. Remember, all of these will be ignored once you set it to production.
-App.propTypes = {
+Battles.propTypes = {
   addNewCounter: React.PropTypes.func.isRequired,
   counters: React.PropTypes.object.isRequired,
   increment: React.PropTypes.func.isRequired,
@@ -72,7 +71,7 @@ App.propTypes = {
 //way to seperate your connect and your pure function.
 export default connect(
   (state) => ({
-    counters: state.app.counters
+    counters: state.battles.counters
   }),
   (dispatch) => ({
     addNewCounter: () => dispatch(actions.newCounter()),
@@ -80,4 +79,4 @@ export default connect(
     decrement: (id) => dispatch(actions.decrement(id)),
     incrementWithDelay: (id) => dispatch(actions.incrementWithDelay(id))
   })
-)(App)
+)(Battles)
