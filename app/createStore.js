@@ -5,8 +5,10 @@ import { app } from './modules'
 import { battles } from './modules'
 
 import * as reducers from './reducers';
+import createLogger from 'redux-logger';
 
-const middleware = applyMiddleware(thunk);
+const logger = createLogger();
+const middleware = applyMiddleware(thunk,logger);
 
 export default (data = {}) => {
   const rootReducer = combineReducers({
