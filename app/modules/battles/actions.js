@@ -1,4 +1,4 @@
-import { INCREMENT, DECREMENT, ADD_NEW_COUNTER } from './constants'
+import { SELECT,TOGGLE_JOIN, ADD_NEW_COUNTER } from './constants'
 
 //each action should have the following signiture.
 //  {
@@ -9,11 +9,13 @@ import { INCREMENT, DECREMENT, ADD_NEW_COUNTER } from './constants'
 //                                    newCounter action
 //  }
 
-//this action tell the reducer which counter with specified id needs to be
-//incremented.
-export const increment = (id) => {
+
+
+
+//this action tell the reducer which battle with specified id was selected.
+export const select = (id) => {
   return {
-    type: INCREMENT,
+    type: SELECT,
     payload: {
       id
     }
@@ -21,10 +23,9 @@ export const increment = (id) => {
 }
 
 //this action tell the reducer which counter with specified id needs to be
-//decremented.
-export const decrement = (id) => {
+export const toggleJoin = (id) => {
   return {
-    type: DECREMENT,
+    type: TOGGLE_JOIN,
     payload: {
       id
     }
@@ -38,7 +39,7 @@ export const newCounter = () => {
   }
 }
 
-
+/*
 export const incrementWithDelay = (id) => {
   return (dispatch, getState) => {
 
@@ -71,3 +72,4 @@ export const incrementWithDelay = (id) => {
     }, 1000)
   }
 }
+*/

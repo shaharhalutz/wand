@@ -1,5 +1,5 @@
 import { NAME } from './constants'
-import Battles from './Battles'
+import BattlesMod from './BattlesMod'
 import reducer from './reducer'
 import * as actions from './actions'
 
@@ -8,7 +8,7 @@ import * as actions from './actions'
 
 export default {
   NAME,
-  Battles,
+  BattlesMod,
   reducer,
   actions
 }

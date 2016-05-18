@@ -6,8 +6,8 @@
 export const NAME = 'battles'
 
 //action types
-export const INCREMENT = `${NAME}/INCREMENT`
-export const DECREMENT = `${NAME}/DECREMENT`
 export const ADD_NEW_COUNTER = `${NAME}/NEW`
 
+export const TOGGLE_JOIN = `${NAME}/TOGGLE_JOIN`
+export const SELECT = `${NAME}/SELECT`
 //as you can see above, each action is namespaced with module's name.

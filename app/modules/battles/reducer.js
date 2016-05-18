@@ -1,9 +1,10 @@
 import { handleActions } from 'redux-actions'
-import { INCREMENT, DECREMENT, ADD_NEW_COUNTER } from './constants'
+import { INCREMENT, DECREMENT, ADD_NEW_COUNTER ,TOGGLE_JOIN,SELECT} from './constants'
 
 const initialState = {
   idGen: 0,
-  counters: { }
+  battles: { },
+  selectedBattle:null
 }
 
 //you can do better here, I was just showing that you need to make a new copy
@@ -16,7 +17,7 @@ const initialState = {
 export default handleActions({
   [ADD_NEW_COUNTER]: (state, action) => {
     console.log('inside ADD_NEW_COUNTER');
-    const { idGen } = state
+    const { idGen,selectedBattle } = state
     const newId = idGen + 1
 
     //this reducer basically generate a new id for new counter and
@@ -24,13 +25,17 @@ export default handleActions({
 
     return {
       idGen: newId,
-      counters: {
-        ...state.counters,
-        [newId]: 0
+      selectedBattle:selectedBattle,
+      battles: {
+        ...state.battles,
+        [newId]: {
+                    title:(''+newId),
+                    joined:false
+                  }
       }
     }
   },
-  [INCREMENT]: (state, action) => {
+  [TOGGLE_JOIN]: (state, action) => {
     const { payload: { id } } = action
 
     //because payload contains the id and we already know that we are about
@@ -38,23 +43,21 @@ export default handleActions({
 
     return {
       ...state,
-      counters: {
-        ...state.counters,
-        [id]: state.counters[id] + 1
+      battles: {
+        ...state.battles,
+        [id]: {title:state.battles[id].title  , joined: !state.battles[id].joined}
       }
     }
   },
-  [DECREMENT]: (state, action) => {
+  [SELECT]: (state, action) => {
     const { payload: { id } } = action
 
-    //this is exatcly similar as previous reducer, except we are decrementing
+    //because payload contains the id and we already know that we are about
+    //to increment the value of that id, we modify only that value by one
 
     return {
       ...state,
-      counters: {
-        ...state.counters,
-        [id]: state.counters[id] - 1
-      }
+      selectedBattle: id
     }
   },
 }, initialState)

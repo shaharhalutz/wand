@@ -1,7 +1,7 @@
 import React, { StyleSheet, View ,Text} from 'react-native'
 import { connect } from 'react-redux'
 
-import { Counters, Counter } from './../../components'
+import { Battles, Battle } from './../../components'
 import * as actions from './actions'
 
 const styles = StyleSheet.create({
@@ -15,53 +15,53 @@ const styles = StyleSheet.create({
   },
 })
 
-const renderCounters = (counters, decrement, increment, incrementWithDelay) => {
-  return Object.keys(counters).map((id) => {
-    const value = counters[id]
+const renderCounters = (battles,toggleJoin,select,actions) => {
+  return Object.keys(battles).map((id) => {
+    const battle = battles[id];
+
     return (
-      <Counter
+      <Battle
         key={id}
-        decrementFn={() => decrement(id)}
-        incrementFn={() => increment(id)}
-        incrementWithDelayFn={() => incrementWithDelay(id)}>
-        {value}
-      </Counter>
+        toggleJoinFn={() => toggleJoin(id)}
+        selectFn={() => select(id)}
+        joined={battle.joined}
+        title={battle.title}
+        actions = {actions} >
+      </Battle>
     )
   })
 }
 
-const Battles = (props) => {
+const BattlesMod = (props) => {
   const {
     actions,
     addNewCounter,
-    counters,
-    decrement,
-    increment,
-    incrementWithDelay
+    battles,
+    toggleJoin,
+    select
   } = props
 
   return (
     <View style={styles.container}>
-      <Counters addFn={addNewCounter}>
-        {renderCounters(counters, decrement, increment, incrementWithDelay)}
-      </Counters>
+      <Battles addFn={addNewCounter}>
+        {renderCounters(battles,toggleJoin,select,actions)}
+      </Battles>
       <Text style={styles.text} onPress={actions.routes.game()}>Start Game</Text>
 
     </View>
   )
 }
 
-Battles.displayName = 'Battles'
+BattlesMod.displayName = 'BattlesMod'
 
 //it is a good practice to always indicate what type of props does your component
 //receive. This is really good for documenting and prevent you from a lot of bug during
 //development mode. Remember, all of these will be ignored once you set it to production.
-Battles.propTypes = {
+BattlesMod.propTypes = {
   addNewCounter: React.PropTypes.func.isRequired,
-  counters: React.PropTypes.object.isRequired,
-  increment: React.PropTypes.func.isRequired,
-  decrement: React.PropTypes.func.isRequired,
-  incrementWithDelay: React.PropTypes.func.isRequired
+  battles: React.PropTypes.object.isRequired,
+  toggleJoin: React.PropTypes.func.isRequired,
+  select: React.PropTypes.func.isRequired
 }
 
 //Here's the most complex part of our app. connect is a function which selects,
@@ -71,12 +71,11 @@ Battles.propTypes = {
 //way to seperate your connect and your pure function.
 export default connect(
   (state) => ({
-    counters: state.battles.counters
+    battles: state.battles.battles
   }),
   (dispatch) => ({
     addNewCounter: () => dispatch(actions.newCounter()),
-    increment: (id) => dispatch(actions.increment(id)),
-    decrement: (id) => dispatch(actions.decrement(id)),
-    incrementWithDelay: (id) => dispatch(actions.incrementWithDelay(id))
+    toggleJoin: (id) => dispatch(actions.toggleJoin(id)),
+    select: (id) => dispatch(actions.select(id))
   })
-)(Battles)
+)(BattlesMod)

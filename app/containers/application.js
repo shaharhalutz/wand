@@ -63,7 +63,7 @@ class Application extends Component {
         <Route name="game" component={app.App} />
 
         <TabRoute name="tabBar" barTint='#FFFFFF' tint="#32DEAF">
-          <Route name="tab1" component={battles.Battles} title="Home" tabItem={{icon: assets['home'], title: 'Home'}} />
+          <Route name="tab1" component={battles.BattlesMod} title="Home" tabItem={{icon: assets['home'], title: 'Home'}} />
           <Route name="tab2" component={Master('#222')} title="Calendar" tabItem={{icon: assets['calendar'], title: 'Calendar'}} />
           <Route name="tab3" component={Master('#333')} title="Video" tabItem={{icon: assets['video'], title: 'Video'}} />
           <Route name="tab4" component={Master('#444')} title="Profile" tabItem={{icon: assets['profile'], title: 'Profile'}} />
