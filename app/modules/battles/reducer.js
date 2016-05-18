@@ -1,5 +1,5 @@
 import { handleActions } from 'redux-actions'
-import { INCREMENT, DECREMENT, ADD_NEW_COUNTER ,TOGGLE_JOIN,SELECT} from './constants'
+import { ADD_NEW_COUNTER ,TOGGLE_JOIN,SELECT} from './constants'
 
 const initialState = {
   idGen: 0,
