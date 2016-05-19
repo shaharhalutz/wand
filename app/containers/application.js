@@ -17,7 +17,7 @@ import Master from '../components/Master';
 import SignIn from '../components/SignIn';
 //import Home from '../components/Home'
 import {battles} from '../modules';
-import {app} from '../modules';
+import {game} from '../modules';
 
 
 const mapStateToProps = state => ({
@@ -60,7 +60,7 @@ class Application extends Component {
 
         <Route name="signIn" component={SignIn} type="reset" hideNavBar={true} />
         <Route name="detail" component={Detail} />
-        <Route name="game" component={app.App} />
+        <Route name="game" component={game.Game} />
 
         <TabRoute name="tabBar" barTint='#FFFFFF' tint="#32DEAF">
           <Route name="tab1" component={battles.BattlesMod} title="Home" tabItem={{icon: assets['home'], title: 'Home'}} />

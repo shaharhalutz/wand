@@ -3,6 +3,8 @@ import thunk from 'redux-thunk';
 
 import { app } from './modules'
 import { battles } from './modules'
+import { game } from './modules'
+
 
 import * as reducers from './reducers';
 import createLogger from 'redux-logger';
@@ -14,7 +16,9 @@ export default (data = {}) => {
   const rootReducer = combineReducers({
     ...reducers,
     [app.NAME]: app.reducer,
-    [battles.NAME]: battles.reducer
+    [battles.NAME]: battles.reducer,
+    [game.NAME]: game.reducer
+
 
   })
 
