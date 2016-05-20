@@ -2,6 +2,9 @@ import React, { StyleSheet, View ,Text} from 'react-native'
 import { connect } from 'react-redux'
 
 import { Players, Player } from './../../components'
+
+import WandContainer from './containers/wand'
+
 import * as actions from './actions'
 
 const styles = StyleSheet.create({
@@ -46,7 +49,7 @@ const Game = (props) => {
       <Players addFn={addNewCounter}>
         {renderCounters(players,toggleJoin,select,actions)}
       </Players>
-
+      <WandContainer onSpellSelected = {() => console.log('container spell selected!!')} ></WandContainer>
     </View>
   )
 }
