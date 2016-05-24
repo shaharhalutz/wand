@@ -1,3 +1,8 @@
+// TBD: pass selected players to add effect action to dispatch with correct player id
+// TBD: fix issue with effect gen Id, so all effects have correct and unique ids.
+
+
+
 import React, { StyleSheet, View ,Text} from 'react-native'
 import { connect } from 'react-redux'
 
@@ -29,7 +34,8 @@ const renderCounters = (players,toggleJoin,select,actions) => {
         selectFn={() => select(id)}
         selected={player.selected}
         name={player.name}
-        actions = {actions} >
+        actions = {actions}
+        effects = {player.effects}>
       </Player>
     )
   })

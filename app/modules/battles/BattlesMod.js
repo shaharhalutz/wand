@@ -19,11 +19,18 @@ const renderCounters = (battles,toggleJoin,select,actions) => {
   return Object.keys(battles).map((id) => {
     const battle = battles[id];
 
+    // TBD: why routing doesnt work ? 
+    const onBattleSelected = function(id){
+      console.log('onBattleSelected')
+      actions.routes.game();
+      select(id);
+    }
+
     return (
       <Battle
         key={id}
         toggleJoinFn={() => toggleJoin(id)}
-        selectFn={() => select(id)}
+        selectFn={() => onBattleSelected(id)}
         joined={battle.joined}
         title={battle.title}
         actions = {actions} >

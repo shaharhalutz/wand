@@ -37,6 +37,11 @@ class Wand extends Component {
     this.props.onSpellSelected();
   }
 
+  _onCastEnd(spellId){
+    console.log('_onCastEnd, spellId:'+spellId);
+    this.props.onCastEnd(spellId);
+  }
+
   renderSpellOptions() {
 
   // TBD: here temporarily, need to pass spells as props and initialy save spell to consitent storage on App Data refresh.
@@ -106,7 +111,7 @@ class Wand extends Component {
           </Select>
 
           <View style={styles.buttonContainer}>
-            <CastButton text="Cast" onPress={() => console.log('cast end')}
+            <CastButton text="Cast" onPress={this._onCastEnd.bind(this)}
                                 onPressIn={() => console.log('cast start')} />
           </View>
           <OptionList ref="OPTIONLIST"/>

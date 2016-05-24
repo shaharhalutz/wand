@@ -2,6 +2,8 @@ import React, { StyleSheet, View, Text } from 'react-native'
 import * as actions from '../modules/battles/actions'
 
 import Button from './Button'
+import Effects from './Effects'
+
 import CheckBox from 'react-native-checkbox';
 
 const styles = StyleSheet.create({
@@ -18,7 +20,7 @@ const styles = StyleSheet.create({
 })
 
 const Player = (props) => {
-  const { selected,name,toggleJoinFn,selectFn,actions} = props
+  const { selected,name,toggleJoinFn,selectFn,actions,effects} = props
 
   // TBD: how do we route from this Component?
   // actions.routes.game();
@@ -31,6 +33,7 @@ const Player = (props) => {
                 checked={selected}
                 onChange={toggleJoinFn}
       />
+      <Effects effects={effects} />
 
     </View>
   )

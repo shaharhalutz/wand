@@ -1,4 +1,4 @@
-import { SELECT,TOGGLE_JOIN, ADD_NEW_COUNTER } from './constants'
+import { SELECT,TOGGLE_JOIN, ADD_NEW_COUNTER ,PLAYER_ADD_EFFECT} from './constants'
 
 //each action should have the following signiture.
 //  {
@@ -36,6 +36,17 @@ export const toggleJoin = (id) => {
 export const newCounter = () => {
   return {
     type: ADD_NEW_COUNTER
+  }
+}
+
+//tells the reducer, we need a new counter on the scene with a new ID
+export const castSpell = (spellId,potency) => {
+  return {
+    type: PLAYER_ADD_EFFECT,
+    payload: {
+      spellId,
+      potency
+    }
   }
 }
 

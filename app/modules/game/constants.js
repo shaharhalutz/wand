@@ -10,4 +10,5 @@ export const ADD_NEW_COUNTER = `${NAME}/NEW`
 
 export const TOGGLE_JOIN = `${NAME}/TOGGLE_JOIN`
 export const SELECT = `${NAME}/SELECT`
+export const PLAYER_ADD_EFFECT = `${NAME}/PLAYER_ADD_EFFECT`
 //as you can see above, each action is namespaced with module's name.

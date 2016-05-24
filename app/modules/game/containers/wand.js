@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { setVisibilityFilter } from '../actions';
+import { castSpell } from '../actions';
 import { Wand} from './../../../components'
 
 
@@ -13,6 +13,13 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onSpellSelected: () => {
       //dispatch(setVisibilityFilter(ownProps.filter));
+      ownProps.onSpellSelected(); // TBD: is this the way to get top level compoenent actions triggered or should we pass and dispatch a top level action ?
+      //console.log('container: spell selected!');
+    },
+    onCastEnd: (spellId) => {
+      //dispatch(setVisibilityFilter(ownProps.filter));
+      //dispatch(newEffect(1,{name:'FireDamage',duration:1})), // TBD: should iterate on all ownProps.targetIds and dispatch them
+      dispatch(castSpell(spellId,100));
       ownProps.onSpellSelected(); // TBD: is this the way to get top level compoenent actions triggered or should we pass and dispatch a top level action ?
       //console.log('container: spell selected!');
     }
